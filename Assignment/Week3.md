@@ -196,21 +196,93 @@ Y(S)/F(S) =
 ```
 
 
+위 연산의 결과로 전달함수는 다음과 같다.
 
 
+$$
+G(S) = \frac{Y(S)}{F(S)} = \frac{k+bS}{MmS^4+bmS^3+MbS^3+kmS^2+kMS^2}
+$$
 
+## P2.37
+입력 힘 $u(t)$를 가지는 두 개의 질량 시스템을 그림 P2.37에 나타났다. $m_1 = m_2 = 1$ 이고 $K_1 = K_2 = 2$일 때, (a) 이 시스템을 표현하는 미분방정식을 구하라. (b) $U(S))에서 $Y(S)$까지의 전달함수를 계산하라.
 
+### 풀이
 
+#### (a) 이 시스템을 표현하는 미분방정식을 구하라 
 
+$$
+m_{1}\frac{\mathrm{d^2}x(t)}{\mathrm{d} t} + k_1x(t) + k_2(x(t)-y(t)) = 0
+$$
 
+$$
+m_{2}\frac{\mathrm{d^2}y(t)}{\mathrm{d} t} + k_2(y(t)-x(t)) = u(t)
+$$
 
+위 식에 $m_1 = m_2 = K_1 = K_2 = 1$을 대입하여 미분방정식으로 정리한다.
 
+$$
+\frac{\mathrm{d^2}x(t)}{\mathrm{d} x} = -2x(t) + y(t)
+$$
 
+$$
+\frac{\mathrm{d^2}y(t)}{\mathrm{d} t} = u(t) + x(t) -y(t)
+$$
 
+#### (b) $U(S))에서 $Y(S)$까지의 전달함수를 계산하라.
 
+위 (a)에서 구한 미분방정식을 가져와 라플라스 변환을 적용하고
 
+$$
+S^2X(S) = -2X(S) + Y(S) \to (S^2+2)X(S) - Y(S) = 0
+$$
 
+$$
+S^2Y(S) = U(S) + X(S) - Y(S) \to -X(S) + (S^2 + 1)Y(S) = U(S)
+$$
 
+행렬방정식으로 접근하면
+
+$$
+\begin{bmatrix}
+S^2+2 & -1\\ 
+ -1& S^2+1
+\end{bmatrix}
+\begin{bmatrix}
+X(S) \\
+Y(S)
+\end{bmatrix}
+&equals;
+\begin{bmatrix}
+0 \\
+U(S)
+\end{bmatrix}
+$$
+
+가 된다.
+
+역행렬을 통해 $Y(S)$에 대해 전개하면 $U(S)$에서 $Y(S)$의 전달함수를 구할 수 있다.
+
+$$
+\begin{bmatrix}
+X(S) \\
+Y(S)
+\end{bmatrix}
+&equals;
+\begin{bmatrix}
+\frac{S^2+1}{S^4+3S^2+1} & \frac{1}{S^4+3S^2+1}\\ 
+\frac{1}{S^4+3S^2+1}& \frac{S^2+2}{S^4+3S^2+1}
+\end{bmatrix}
+\begin{bmatrix}
+0 \\
+U(S)
+\end{bmatrix}
+$$
+
+$Y(S) = \frac{S^2+2}{S^4+3S^2+1}U(S)$ 이므로 전달함수는 다음과 같다.
+
+$$
+G(S) = \frac{Y(S)}{(U(S)} = \frac{S^2+2}{S^4+3S^2+1}
+$$
 
 
 
