@@ -27,7 +27,43 @@ $$
 ## P2.12
 그림 P2.12에 주어진 블록선도로 표현된 개루프 제어시스템에 대해, $t \to \infty$일 때 단위계단 입력 $r(t)$에 대한 응답 $y(t) \to 1$이 되도록 $K$값을 정하라. 초기조건은 영이라고 가정한다.
 
-<img scr="https://ifh.cc/g/z0pmnG.jpg" width="300" height="200"/>
+<img src="https://ifh.cc/g/z0pmnG.jpg" width="300" height="200"/>
+
+### 풀이
+초기조건이 0이므로, Laplace로 입,출력 간의 관계를 타나낼 수 있다. $\to \frac{Y(S)}{X(S)} = \frac{K}{S+50}$
+
+단위계단 입력으로 $r(t)$의 라플라스 변환값은 $R(S) = \frac{1}{S}$
+
+$$
+Y(S) = \frac{K}{S+50}R(S) = \frac{K}{S(S+50)} = \frac{K}{50}(\frac{1}{S}-\frac{1}{S+50})
+$$
+
+이 입출력 관계식을 역 라플라스 변환을 하면
+
+$$
+y(t) = \frac{K}{50}(1-e^{-50t})
+$$
+
+가 되고 이때, $t \to \infty, y(t) \to 1$이기 위해서 $K=50$이다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
