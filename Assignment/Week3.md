@@ -93,7 +93,6 @@ disp('역라플라스:')
 disp(xt);
 역라플라스:
 exp(-(b*t)/(2*m))*(cosh((t*(b^2/4 - k*m)^(1/2))/m) + (b*sinh((t*(b^2/4 - k*m)^(1/2))/m))/(2*(b^2/4 - k*m)^(1/2)))
-
 ```
 
 위 연산을 진행하면
@@ -103,17 +102,98 @@ $$
 e^-{\frac{bt}{2m}}(cosh(\frac{t\sqrt{\frac{b^2}{4}-km}}{m})+b\frac{sinh(\frac{t\sqrt{\frac{b^2}{4}-km}}{m})}{2\sqrt{\frac{b^2}{4}-km}}) \cdot x(0)
 $$
 
+## P2.26
+로봇은 그리퍼로 무거운 부하를 들 수 있으며 팔각 부위의 유연성이 높다[6, 20]. 이 로봇의 두 질량모델이 그림 P2.26에 주어져 있다. 전달함수 $Y(s)/F(s)$를 구하라.
+
+<img src="https://ifh.cc/g/Rlb6or.jpg" width="350" height="300"/>
+
+### 풀이
+스프링-질량-감쇠기 시스템은 기계적인 운동에 속하므로 뉴턴의 운동법칙을 적용하여 두 물체의 질량은 각각 M,m이며 움직인 거리를 $x(t), y(t)$라 설정한다.
+
+$$
+M\frac{\mathrm{d^2x(t)}}{\mathrm{d} x^2} +b( \frac{\mathrm{dx(t)} }{\mathrm{d} x} -\frac{\mathrm{dy(t)} }{\mathrm{d} x}) + K(x(t)-y(t)) = F(t)
+$$
+
+$$
+M\frac{\mathrm{d^2y(t)}}{\mathrm{d} x^2} +b( \frac{\mathrm{dy(t)} }{\mathrm{d} x} -\frac{\mathrm{dx(t)} }{\mathrm{d} x}) + K(y(t)-x(t)) = 0
+$$
+
+위 두개의 식을 라플라스로 정리하게 되면 아래와 같은 식이 된다.
+
+$$
+MS^2X(S) +bSX(S) + KX(S) - bSY(S) - KY(S) = F(S)
+$$
 
 
+$$
+mS^2Y(S) +bSY(S) + KY(S) - bSX(S) - KX(S) = 0
+$$
 
+전달함수 $\frac{Y(S)}{F(S)}$를 행렬식으로 구하면
 
+$$\begin{bmatrix}
+MS^2+bS+k & -(bS + k)\\ 
+ -(bS+K)& mS^2+bS+K 
+\end{bmatrix}
+\begin{bmatrix}
+X(S) \\
+Y(S)
+\end{bmatrix}
+&equals;
+\begin{bmatrix}
+F(S) \\
+0
+\end{bmatrix}
+$$
 
+이를 역행렬로 $Y(S)$를 구하면
 
+$$
+\begin{bmatrix}
+X(S) \\
+Y(S)
+\end{bmatrix}
+&equals;
+A^{-1}
+\begin{bmatrix}
+F(S) \\
+0
+\end{bmatrix}
+$$
 
+Matlab으로 연산하면 다음과 같다.
 
+```
+syms S M m b k F
 
+% 행렬 A 정의
+A = [M*S^2 + b*S + k, -(b*S + k);
+     -(b*S + k), m*S^2 + b*S + k];
 
+% 행렬 A의 역행렬 구하기
+A_inv = inv(A);
 
+% 입력 벡터 정의
+B = [F; 0];
+
+Y = inv(A) * B;
+
+% Y(S)/F(S) 계산
+transfer_function = Y(2)/F;
+
+% 결과 출력
+disp('A의 역행렬:');
+disp(A_inv);
+
+disp('Y(S)/F(S) = ');
+disp(transfer_function);
+A의 역행렬:
+[(m*S^2 + b*S + k)/(b*m*S^3 + k*m*S^2 + M*b*S^3 + M*k*S^2 + M*m*S^4),         (k + b*S)/(b*m*S^3 + k*m*S^2 + M*b*S^3 + M*k*S^2 + M*m*S^4)]
+[        (k + b*S)/(b*m*S^3 + k*m*S^2 + M*b*S^3 + M*k*S^2 + M*m*S^4), (M*S^2 + b*S + k)/(b*m*S^3 + k*m*S^2 + M*b*S^3 + M*k*S^2 + M*m*S^4)]
+ 
+Y(S)/F(S) = 
+(k + b*S)/(b*m*S^3 + k*m*S^2 + M*b*S^3 + M*k*S^2 + M*m*S^4)
+```
 
 
 
