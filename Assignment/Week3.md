@@ -206,7 +206,7 @@ $$
 ## P2.37
 입력 힘 $u(t)$를 가지는 두 개의 질량 시스템을 그림 P2.37에 나타났다. $m_1 = m_2 = 1$ 이고 $K_1 = K_2 = 2$일 때, (a) 이 시스템을 표현하는 미분방정식을 구하라. (b) $U(S))에서 $Y(S)$까지의 전달함수를 계산하라.
 
-<img src="https://ifh.cc/g/a0FFR2.jpg" width="300" height="600"/>
+<img src="https://ifh.cc/g/a0FFR2.jpg" width="300" height="500"/>
 
 ### 풀이
 
