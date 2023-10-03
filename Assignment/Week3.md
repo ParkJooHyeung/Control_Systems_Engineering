@@ -46,6 +46,80 @@ $$
 
 가 되고 이때, $t \to \infty, y(t) \to 1$이기 위해서 $K=50$이다.
 
+## P2.15
+스프링-질량 시스템이 그림 P2.15에 주어졌다. 질량 m의 운동을 기술하는 미분방정식을 구하라. 초기조건이 영인 임펄스 입력에 대한 시스템의 응답$x(t)$를 구하라.
+
+<img src="https://ifh.cc/g/VXfWP6.jpg" width="350" height="300"/>
+
+### 풀이
+
+스프링-질량-감쇠기 시스템은 기계적인 운동에 속하므로 뉴턴의 운동법칙을 적용하여 문제를 푼다. 이때 마찰력, 스프링으 장력, 물체의 중력에 대한 식을 구하면
+
+$$
+m\frac{d^2x(t)}{dt^2} + b\frac{dx(t)}{dt} + kx(t) = 0
+$$
+
+이 식을 라플라스 변환을 통해 정리하면
+
+$$
+m(S^2X(S) - Sx(0^-) - \frac{dx(t)}{dt}) + b(SX(S) - x(0^-)) + kX(S) = 0
+$$
+
+$$
+r(t)=0,x(0^-)=x_0,\frac{dx(t)}{dt})=0 \to mS^2\cdot X(S) -mSx_0 + bSX(S) - bx_0 + kX(S) = 0
+$$
+
+식을 정리하면
+
+$$
+mS^2X(S) + bSX(S) + kX(S) = mSx_0 + bx_0
+$$
+
+$$
+X(S)(mS^2+bS+k) = x_0(mS+b)
+$$
+
+$$
+X(S) = \frac{mS+b}{mS^2+bS+k}x_0
+$$
+
+가 되고 이를 Matlab을 통해 역라플라스를 진행하면
+
+```
+syms S m b k
+XS = (m*S + b) / (m*S^2 + b*S + k);
+xt = ilaplace(XS);
+disp('역라플라스:')
+disp(xt);
+역라플라스:
+exp(-(b*t)/(2*m))*(cosh((t*(b^2/4 - k*m)^(1/2))/m) + (b*sinh((t*(b^2/4 - k*m)^(1/2))/m))/(2*(b^2/4 - k*m)^(1/2)))
+
+```
+
+위 연산을 진행하면
+
+
+$$
+e^-{\frac{bt}{2m}}(cosh(\frac{t\sqrt{\frac{b^2}{4}-km}}{m})+b\frac{sinh(\frac{t\sqrt{\frac{b^2}{4}-km}}{m})}{2\sqrt{\frac{b^2}{4}-km}}) \cdot x(0)
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
