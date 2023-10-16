@@ -46,13 +46,23 @@ $$
 \frac{dx_1(t)}{dt} = x_2(t)
 $$
 
+$$
+\frac{dx_2(t)}{dt} = -\frac{b}{M}x_2(t) -\frac{k}{M}x_1(t) + \frac{1}{M}u(t)
+$$
 
+으로 두 개의 1차 미분방정식으로 쓸 수 있다.
 
+## P3.3
+그림 P3.3과 같은 RLC 회로가 주어졌다. 상태변수 $x_1(t) = i_L(t), x_2(t) = v_c(t)$로 설정하고 상태미분방정식을 구하라.
 
+<img src="https://ifh.cc/g/w7SpNw.jpg" width="600" height="400"/>
 
+### 풀이
+외부 회로에서 KVL을 적용하면
 
+$$
 
-
+$$
 
 
 
