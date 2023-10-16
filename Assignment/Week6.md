@@ -58,11 +58,61 @@ $$
 <img src="https://ifh.cc/g/w7SpNw.jpg" width="600" height="400"/>
 
 ### 풀이
+주어진 상태변수는
+
+$$
+x_1(t) = i_L(t), x_2(t) = v_c(t)
+$$
+
+이다.
+
 외부 회로에서 KVL을 적용하면
 
 $$
+L\frac{di_L(t)}{dt} - v_c(t) + v_2(t) - v_1(t) = 0
+$$
+
+이고 KCL을 노드를 기준으로 적용하면
 
 $$
+C\frac{dv_c(t)}{dt} = -i_L(t) + i_R
+$$
+
+이 된다. 여기서 R에 흐르는 i_R을 고려해보면
+
+$$
+i_RR - v_2(t) + v_c(t) = 0
+$$
+
+$$
+i_R = \frac{v_2(t)}{R} - \frac{v_1(t)}{R}
+$$
+
+가 되고 이를 KCL에 적용하면
+
+$$
+C\frac{dv_c(t)}{dt} = -i_L(t) + \frac{v_2(t)}{R} - \frac{v_1(t)}{R}
+$$
+
+로 정리할 수 있다.
+
+위 상태미분방정식들을 matrix형식으로 표현하면
+
+$$
+\begin{pmatrix} \dot{x_1} \\
+\dot{x_2} 
+\end{pmatrix} = \begin{bmatrix} 0 & 1/L \\
+-1/C & -1/RC
+\end{bmatrix}\begin{pmatrix} x_1 \\
+x_2
+\end{pmatrix} + \begin{bmatrix} 1/L & -1/L \\
+0 & 1/RC
+\end{bmatrix} \begin{pmatrix} v_1 \\
+v_2
+\end{pmatrix}, where x_1 = i_L  and  x_2 = v_c
+$$
+
+
 
 
 
