@@ -306,11 +306,11 @@ $$
 가 된다. 여기에 $sIX(s) = AX(s) + BU(S)$를 $X(s)$에 대한 식으로 전환하여 $Y(s)$식에 대입하게 되면
 
 $$
-X(s) = \frac{BU(s)}{sI-A}
+X(s) = \frac{BU(s)}{sI-A} = \Phi BU(s)
 $$
 
 $$
-Y(s) = \frac{CB}{sI-A} + D
+Y(s) = CX(s) = \Phi BCU(s)
 $$
 
 이러한 상태변수방정식으로 표현할 수 있으며 
