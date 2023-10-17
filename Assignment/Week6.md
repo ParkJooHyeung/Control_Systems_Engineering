@@ -1,4 +1,4 @@
-<img width="425" alt="image" src="https://github.com/ParkJooHyeung/Control_Systems_Engineering/assets/59814944/522f340c-e9f4-4a4e-a8ce-7e8b59a10c46"># 제어공학1_Chapter3_Assignment
+# 제어공학1_Chapter3_Assignment
 
 ## P3.1
 그림 P3.1에 스프링-질량-감쇠기 시스템이 주여져 있다. (a) 적당한 상태변수를 설정하라. (b) 상태변수로 표현된 1차 미분방정식을 구하라. (c) 상태미분방정식을 구하라.
@@ -137,7 +137,7 @@ __(b) 상태변수 모델을 구할고 위상변수형 블록선도를 작성하
 $$
 A = \begin{bmatrix} 0 & 1 & 0 \\
 0 & 0 & 1 \\
--2 & 23 & -5 \end{bmatrix}
+-5 & 23 & -2 \end{bmatrix}
 $$
 
 $$
@@ -187,12 +187,12 @@ G = C * Phi * B + D;
 
 * 출력
 
-<img src="https://ifh.cc/g/DbJG0H.png" width="400" height="500"/>
+<img src="https://ifh.cc/g/DbJG0H.png" width="400" height="400"/>
 
 ## P3.12
 전달함수가 $\frac{Y(s)}{R(s)} = T(s) = \frac{8(s+5)}{s^3 + 12s^2 + 44s + 48}$ 인스템에서 (a) 상태공간모델으르 구하라. (b) 상태천이행렬 $\Phi(t)$를 구하라.
 
-<img src="https://ifh.cc/g/xwXNoY.jpg" width="400" height="300"/>
+<img src="https://ifh.cc/g/xwXNoY.jpg" width="400" height="150"/>
 
 ### 풀이
 
@@ -202,8 +202,8 @@ __(a) 상태공간모델을 구하라.__
 
 $$
 \dot{x} = \begin{bmatrix} 0 & 1 & 0 \\
-0 & 0 & 1\\
--48 & -44 & -12 \end{bmatrix}x + \begin{bmatrix} 0 \\
+1 & 0 & 0\\
+-12 & -44 & -48 \end{bmatrix}x + \begin{bmatrix} 0 \\
 0 \\
 1 \end{bmatrix}r
 $$
@@ -267,7 +267,7 @@ PI = ilaplace(G)
 
 * 출력
 
-<img src="https://ifh.cc/g/vZpff4.png" width="400" height="300"/>
+<img src="https://ifh.cc/g/vZpff4.png" width="400" height="600"/>
 
 
 ## P3.17
@@ -335,7 +335,26 @@ $$
 
 가 된다.
 
+__위 풀이를 matlab으로 표현하면 아래와 같다.__
 
+* 코드
+
+
+```matlab
+syms s
+A = [1, 1, -1; 4, 3, 0; -2, 1, 10];
+B = [0; 0; 4];
+C = [1, 0, 0];
+D = 0;
+Phi = inv(s*eye(3) - A);
+G = C*Phi*B+D;
+[n,d] = numden(G)
+```
+
+* 결과
+
+
+<img src="https://ifh.cc/g/mLckDt.png" width="400" height="200"/>
 
 
 
