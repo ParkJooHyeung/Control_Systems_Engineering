@@ -132,7 +132,7 @@ $$
 
 __(b) 상태변수 모델을 구할고 위상변수형 블록선도를 작성하라.__
 
-matrix differential equation은
+행렬미분방정식은
 
 $$
 A = \begin{bmatrix} 0 & 1 & 0 \\
@@ -167,15 +167,48 @@ $$
 ## P3.12
 전달함수가 $\frac{Y(s)}{R(s)} = T(s) = \frac{8(s+5)}{s^3 + 12s^2 + 44s + 48}$ 인스템에서 (a) 상태공간모델으르 구하라. (b) 상태천이행렬 $\Phi(t)$를 구하라.
 
+__(a) 상태공간모델을 구하라.__
+
+상태변수는
+
+$$
+\dot{x} = \begin{bmatrix} 0 & 1 & 0 \\
+0 & 0 & 1\\
+-48 & -44 & -12 \end{bmatrix}x + \begin{bmatrix} 0 \\
+0 \\
+1 \end{bmatrix}r
+$$
+
+$$
+y = \begin{bmatrix} 48 & 8 & 0\end{bmatrix}x
+$$
+
+이다.
+
+__(b) 상태천이행렬 $\Phi(t)$를 구하라.__
+
+$$
+\Phi(t) = \begin{bmatrix} \Phi_1(t) \vdots \Phi_2(t) \vdots \Phi3(t)\end{bmatrix}
+$$
 
 
+$$
+\Phi_1(t) = \begin{bmatrix} e^{-6t} - 3e^{-4t} + 3e^{-2t} \\
+-6e^{-6t} - 12e^{-4t} - 6e^{-2t} \\
+36e^{-6t} - 48e^{-4t} + 12e^{-2t} \end{bmatrix}
+$$
 
 
+$$
+\Phi_2(t) = \begin{bmatrix} \frac{3}{4}e^{-6t} - 2e^{-4t} + \frac{5}{4}e^{-2t} \\
+-\frac{9}{2}e^{-6t} + 8e^{-4t} - \frac{5}{2}e^{-2t} \\
+27e^{-6t} - 32e^{-4t} + 5e^{-2t}} \end{bmatrix}
+$$
 
 
-
-
-
-
-
+$$
+\Phi_3(t) = \begin{bmatrix} e^{-6t} - 3e^{-4t} + 3e^{-2t} \\
+-6e^{-6t} - 12e^{-4t} - 6e^{-2t} \\
+36e^{-6t} - 48e^{-4t} + 12e^{-2t} \end{bmatrix}
+$$
 
