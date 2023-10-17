@@ -1,4 +1,4 @@
-# 제어공학1_Chapter3_Assignment
+<img width="425" alt="image" src="https://github.com/ParkJooHyeung/Control_Systems_Engineering/assets/59814944/522f340c-e9f4-4a4e-a8ce-7e8b59a10c46"># 제어공학1_Chapter3_Assignment
 
 ## P3.1
 그림 P3.1에 스프링-질량-감쇠기 시스템이 주여져 있다. (a) 적당한 상태변수를 설정하라. (b) 상태변수로 표현된 1차 미분방정식을 구하라. (c) 상태미분방정식을 구하라.
@@ -167,29 +167,32 @@ $$
 __(a),(b)를 matlab으로 아래와 같이 표현할 수 있다.__
 
 * 코드
-```
+```matlab
+b = [0 0 1 2];
+a = [1 5 -23 2];
+
+[A,B,C,D] = tf2ss(b,a);
+
+A
+B
+C
+D
+
 syms s
-A = [-5, 23, -2; 1, 0, 0; 0, 1, 0];
-B = [1; 0; 0];
-C = [0, 1, 2];
-D = 0;
 Phi = inv(s*eye(3) - A);
 G = C * Phi * B + D;
 [n,d] = numden(G)
 
-num = sym2poly(n)
-den = sym2poly(d)
-[A, B, C, D] = tf2ss(num, den)
 ```
 
 * 출력
 
-<img src="https://ifh.cc/g/JR5sFt.png" width="400" height="200"/>
+<img src="https://ifh.cc/g/DbJG0H.png" width="400" height="500"/>
 
 ## P3.12
 전달함수가 $\frac{Y(s)}{R(s)} = T(s) = \frac{8(s+5)}{s^3 + 12s^2 + 44s + 48}$ 인스템에서 (a) 상태공간모델으르 구하라. (b) 상태천이행렬 $\Phi(t)$를 구하라.
 
-<img src="https://ifh.cc/g/xwXNoY.jpg" width="400" height="600"/>
+<img src="https://ifh.cc/g/xwXNoY.jpg" width="400" height="300"/>
 
 ### 풀이
 
@@ -237,6 +240,35 @@ $$
 -\frac{3}{4}e^{-6t} - e^{-4t} - \frac{1}{4}e^{-2t} \\
 \frac{9}{2}e^{-6t} - 4e^{-4t} + \frac{1}{2}e^{-2t} \end{bmatrix}
 $$
+
+__위 풀이를 matlab으로 표현하면 아래와 같다.__
+* 코드
+```matlab
+b = [0 0 8 40];
+a = [1 12 44 48];
+
+[A,B,C,D] = tf2ss(b,a);
+A
+B
+C
+D
+
+syms s
+Phi = inv(s*eye(3) - A);
+G = C * Phi * B + D;
+[n,d] = numden(G)
+
+num = sym2poly(n)
+den = sym2poly(d)
+[A, B, C, D] = tf2ss(num, den)
+
+PI = ilaplace(G)
+```
+
+* 출력
+
+<img src="https://ifh.cc/g/vZpff4.png" width="400" height="300"/>
+
 
 ## P3.17
 다음과 같은 상태변수 방정식으로 표현된 시스템이 있다.
