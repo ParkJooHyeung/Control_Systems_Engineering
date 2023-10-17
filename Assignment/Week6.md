@@ -167,9 +167,13 @@ $$
 ## P3.12
 전달함수가 $\frac{Y(s)}{R(s)} = T(s) = \frac{8(s+5)}{s^3 + 12s^2 + 44s + 48}$ 인스템에서 (a) 상태공간모델으르 구하라. (b) 상태천이행렬 $\Phi(t)$를 구하라.
 
+<img src="https://ifh.cc/g/xwXNoY.jpg" width="400" height="200"/>
+
+### 풀이
+
 __(a) 상태공간모델을 구하라.__
 
-상태변수는
+상태공간모델은
 
 $$
 \dot{x} = \begin{bmatrix} 0 & 1 & 0 \\
@@ -202,13 +206,87 @@ $$
 $$
 \Phi_2(t) = \begin{bmatrix} \frac{3}{4}e^{-6t} - 2e^{-4t} + \frac{5}{4}e^{-2t} \\
 -\frac{9}{2}e^{-6t} + 8e^{-4t} - \frac{5}{2}e^{-2t} \\
-27e^{-6t} - 32e^{-4t} + 5e^{-2t}} \end{bmatrix}
+27e^{-6t} - 32e^{-4t} + 5e^{-2t} \end{bmatrix}
 $$
 
 
 $$
-\Phi_3(t) = \begin{bmatrix} e^{-6t} - 3e^{-4t} + 3e^{-2t} \\
--6e^{-6t} - 12e^{-4t} - 6e^{-2t} \\
-36e^{-6t} - 48e^{-4t} + 12e^{-2t} \end{bmatrix}
+\Phi_3(t) = \begin{bmatrix} \frac{1}{8}e^{-6t} - \frac{1}{4}e^{-4t} + \frac{1}{8}e^{-2t} \\
+-\frac{3}{4}e^{-6t} - e^{-4t} - \frac{1}{4}e^{-2t} \\
+\frac{9}{2}e^{-6t} - 4e^{-4t} + \frac{1}{2}e^{-2t} \end{bmatrix}
 $$
+
+## P3.17
+다음과 같은 상태변수 방정식으로 표현된 시스템이 있다.
+
+$$
+\dot{x} = \begin{bmatrix} 1 & 1 & -1\\
+4 & 3 & 0\\
+-2 & 1 & 10 \end{bmatrix}x(t) + \begin{bmatrix} 0\\
+0\\
+4 \end{bmatrix}u(t)
+$$
+
+$$
+y(t) = \begin{bmatrix} 1 & 0 & 0 \end{bmatrix}x(t)
+$$
+
+$G(s) = Y(s)/U(s)$를 구하라.
+
+<img src="https://ifh.cc/g/h0hGVS.jpg" width="400" height="200"/>
+
+### 풀이
+
+상태공간 모델부터 설정하면
+
+$$
+\dot{x} = Ax(t) + Bu(t), y(t) = Cx(t) + Du(t)
+$$
+
+가 되고 여기에 라플라스 변환을 취해주게 되면
+
+$$
+sIX(s) = AX(s) + BU(S), Y(s) = CX(s) + DU(s)
+$$
+
+가 된다. 여기에 $sIX(s) = AX(s) + BU(S)$를 $X(s)$에 대한 식으로 전환하여 $Y(s)$식에 대입하게 되면
+
+$$
+X(s) = \frac{BU(s)}{sI-A}
+$$
+
+$$
+Y(s) = \frac{CB}{sI-A} + D
+$$
+
+이러한 상태변수방정식으로 표현할 수 있으며 
+
+$$
+\dot{x} = \begin{bmatrix} 1 & 1 & -1\\
+4 & 3 & 0\\
+-2 & 1 & 10 \end{bmatrix}x(t) + \begin{bmatrix} 0\\
+0\\
+4 \end{bmatrix}u(t)
+$$
+
+$$
+y(t) = \begin{bmatrix} 1 & 0 & 0 \end{bmatrix}x(t)
+$$
+
+에서 전달함수는
+
+$$
+G(s) = C(sI-A)^{-1}B = \frac{-4s+12}{s^3 - 14s^2 + 37s +20}
+$$
+
+가 된다.
+
+
+
+
+
+
+
+
+
 
