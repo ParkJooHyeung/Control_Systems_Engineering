@@ -122,10 +122,10 @@ $$
 ### 풀이
 __(a) 폐루프 전달함수 $T(s) = \frac{Y(s)}{R(s)}$를 구하라.__
 
-폐루프의 전달함수는 
+폐루프의 전달함수는 반환되는 부분을 고려하여
 
 $$
-T(s) = \frac{Y(s)}{R(s)} = \frac{s+2}{s+8} \cdot \frac{1}{s-3} \cdot \frac{1}{s} = \frac{s+2}{s^3+5s^2-24s}
+T(s) = \frac{Y(s)}{R(s)} = \frac{G(s)}{1+G(s)} = \frac{\frac{s+2}{s^3+5s^2-24s}}{1+\frac{s+2}{s^3+5s^2-24s}} = \frac{s+2}{s^3 + 5s^2 - 23s +2}
 $$
 
 가 된다.
@@ -164,10 +164,32 @@ $$
 
 가 된다.
 
+__(a),(b)를 matlab으로 아래와 같이 표현할 수 있다.__
+
+* 코드
+```
+syms s
+A = [-5, 23, -2; 1, 0, 0; 0, 1, 0];
+B = [1; 0; 0];
+C = [0, 1, 2];
+D = 0;
+Phi = inv(s*eye(3) - A);
+G = C * Phi * B + D;
+[n,d] = numden(G)
+
+num = sym2poly(n)
+den = sym2poly(d)
+[A, B, C, D] = tf2ss(num, den)
+```
+
+* 출력
+
+<img src="https://ifh.cc/g/JR5sFt.png" width="400" height="200"/>
+
 ## P3.12
 전달함수가 $\frac{Y(s)}{R(s)} = T(s) = \frac{8(s+5)}{s^3 + 12s^2 + 44s + 48}$ 인스템에서 (a) 상태공간모델으르 구하라. (b) 상태천이행렬 $\Phi(t)$를 구하라.
 
-<img src="https://ifh.cc/g/xwXNoY.jpg" width="400" height="200"/>
+<img src="https://ifh.cc/g/xwXNoY.jpg" width="400" height="600"/>
 
 ### 풀이
 
