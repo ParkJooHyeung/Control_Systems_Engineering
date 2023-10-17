@@ -9,9 +9,11 @@
 __(a) 적당한 상태변수를 설정하라.__
 
 스피링-질량-감쇠기는 뉴턴의 제 2법칙으로, 시스템을 표현하기 위한 충분한 상태변수는 질량의 위치와 속도이므로
+
 $$
 x(t) = (x_1(t), x_2(t))
 $$
+
 로 정의할 수 있다.
 
 여기서
@@ -55,7 +57,7 @@ $$
 ## P3.3
 그림 P3.3과 같은 RLC 회로가 주어졌다. 상태변수 $x_1(t) = i_L(t), x_2(t) = v_c(t)$로 설정하고 상태미분방정식을 구하라.
 
-<img src="https://ifh.cc/g/w7SpNw.jpg" width="600" height="400"/>
+<img src="https://ifh.cc/g/w7SpNw.jpg" width="350" height="200"/>
 
 ### 풀이
 주어진 상태변수는
@@ -111,6 +113,65 @@ x_2
 v_2
 \end{pmatrix}, where x_1 = i_L  and  x_2 = v_c
 $$
+
+## P3.5
+그림 P3.5에 폐루프 제어시스템이 주어져 있다. (a) 폐루프 전달함수 $T(s) = \frac{Y(s)}{R(s)}$를 구하라. (b) 상태변수 모델을 구할고 위상변수형 블록선도를 작성하라.
+
+<img src="https://ifh.cc/g/g2pVxg.jpg" width="400" height="200"/>
+
+### 풀이
+__(a) 폐루프 전달함수 $T(s) = \frac{Y(s)}{R(s)}$를 구하라.__
+
+폐루프의 전달함수는 
+
+$$
+T(s) = \frac{Y(s)}{R(s)} = \frac{s+2}{s+8} \cdot \frac{1}{s-3} \cdot \frac{1}{s} = \frac{s+2}{s^3+5s^2-24s}
+$$
+
+가 된다.
+
+__(b) 상태변수 모델을 구할고 위상변수형 블록선도를 작성하라.__
+
+matrix differential equation은
+
+$$
+A = \begin{bmatrix} 0 & 1 & 0 \\
+0 & 0 & 1 \\
+-2 & 23 & -5 \end{bmatrix}
+$$
+
+$$
+B = \begin{bmatrix} 0 \\
+0 \\
+1
+\end{bmatrix}
+$$
+
+$$
+C = \begin{bmatrix} 2 & 1 & 0
+\end{bmatrix}
+$$
+
+에서
+
+$$
+\dot{x} = Ax +Bu
+$$
+
+$$
+y=Cx
+$$
+
+가 된다.
+
+## P3.12
+전달함수가 $\frac{Y(s)}{R(s)} = T(s) = \frac{8(s+5)}{s^3 + 12s^2 + 44s + 48}$ 인스템에서 (a) 상태공간모델으르 구하라. (b) 상태천이행렬 $\Phi(t)$를 구하라.
+
+
+
+
+
+
 
 
 
