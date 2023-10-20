@@ -163,9 +163,7 @@ v_2(t)\end{bmatrix}
 $$
 
 $$
-\begin{pmatrix} \dot{x_1} \\
-\dot{x_2} 
-\end{pmatrix} = \begin{bmatrix} 0 & 1/L \\
+\dot{x}(t)= \begin{bmatrix} 0 & 1/L \\
 -1/C & -1/RC
 \end{bmatrix}x(t) + \begin{bmatrix} 1/L & -1/L \\
 0 & 1/RC
@@ -190,37 +188,53 @@ $$
 
 __(b) 상태변수 모델을 구할고 위상변수형 블록선도를 작성하라.__
 
-행렬미분방정식은
+상태미분방정식
 
 $$
-A = \begin{bmatrix} 0 & 1 & 0 \\
+\dot{x} = Ax + Bu
+$$
+
+$$
+y = Cx
+$$
+
+를 (a)의 전달함수에 적용하는 과정을 보면 우선
+
+$$
+T(S) = \frac{Y(S)}{R(S)} = \frac{S + 2}{S^3 + 5S^2 -23S + 2}
+$$
+
+에 분자와 분모에 Z(S)를 곱하여 역라플라스로 치환해주면
+
+$$
+\frac{Y(S)}{R(S)} = \frac{(S + 2)Z(S)}{(S^3 + 5S^2 -23S + 2)Z(S)}
+$$
+
+$$
+y(t) = \dot{z}(t) + 2z(t) , r(t) = \dddot{z}(t) + 5\ddot{z}(t) -23\dot{z}(t) +2z(t)
+$$
+
+가 되고 이를 상태미분방정식인
+
+$$
+\dot{x}(t) = \begin{bmatrix} x_1(t) \\
+x_2(t) \\
+x_3(t)\end{bmatrix} = \begin{bmatrix} z(t)\\
+\dot{z}(t) \\
+\ddot{z}(t) \end{bmatrix}
+$$
+
+$$
+\dot{x}(t) = \begin{bmatrix} 0 & 1 & 0 \\
 0 & 0 & 1 \\
--5 & 23 & -2 \end{bmatrix}
-$$
-
-$$
-B = \begin{bmatrix} 0 \\
+-2 & 23 & -5 \end{bmatrix}x(t) + \begin{bmatrix} 0 \\
 0 \\
-1
-\end{bmatrix}
+1 \end{bmatrix}r(t)
 $$
 
 $$
-C = \begin{bmatrix} 2 & 1 & 0
-\end{bmatrix}
+y(t) = \begin{bmatrix} 0 & 1 & 2\end{bmatrix}
 $$
-
-에서
-
-$$
-\dot{x} = Ax +Bu
-$$
-
-$$
-y=Cx
-$$
-
-가 된다.
 
 __(a),(b)를 matlab으로 아래와 같이 표현할 수 있다.__
 
@@ -261,18 +275,20 @@ __(a) 상태공간모델을 구하라.__
 $$
 \dot{x} = \begin{bmatrix} 0 & 1 & 0 \\
 1 & 0 & 0\\
--12 & -44 & -48 \end{bmatrix}x + \begin{bmatrix} 0 \\
+-48 & -44 & -12 \end{bmatrix}x + \begin{bmatrix} 0 \\
 0 \\
 1 \end{bmatrix}r
 $$
 
 $$
-y = \begin{bmatrix} 48 & 8 & 0\end{bmatrix}x
+y = \begin{bmatrix} 40 & 8 & 0\end{bmatrix}x
 $$
 
 이다.
 
 __(b) 상태천이행렬 $\Phi(t)$를 구하라.__
+
+상태천이행렬 $\Phi(t)$는 라플라스로 치환된 특성방정식 $\Phi(S) = [sI-A]^-$를 역라플라스로 치환해주면 된다.
 
 $$
 \Phi(t) = \begin{bmatrix} \Phi_1(t) \vdots \Phi_2(t) \vdots \Phi3(t)\end{bmatrix}
@@ -302,20 +318,13 @@ $$
 __위 풀이를 matlab으로 표현하면 아래와 같다.__
 * 코드
 ```matlab
-clc;
-clear;
-
 b = [0 0 8 40];
 a = [1 12 44 48];
 
 [A,B,C,D] = tf2ss(b,a);
-A
-B
-C
-D
 
 syms s
-Phi = inv(s*eye(3) - A);
+Phi = inv(s*eye(3) - A)
 PI = ilaplace(Phi);
 
 Phi_1 = flip(PI([1:3],3))
@@ -325,7 +334,7 @@ Phi_3 = flip(PI([1:3],1))
 
 * 출력
 
-<img src="https://ifh.cc/g/ON2bRs.png" width="400" height="600"/>
+<img src="https://ifh.cc/g/4fRJoL.png" width="400" height="600"/>
 
 
 ## P3.17
