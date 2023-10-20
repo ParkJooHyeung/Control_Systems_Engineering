@@ -255,19 +255,12 @@ D
 
 syms s
 Phi = inv(s*eye(3) - A);
-G = C * Phi * B + D;
-[n,d] = numden(G)
-
-num = sym2poly(n)
-den = sym2poly(d)
-[A, B, C, D] = tf2ss(num, den)
-
-PI = ilaplace(G)
+PI = ilaplace(Phi)
 ```
 
 * 출력
 
-<img src="https://ifh.cc/g/vZpff4.png" width="400" height="600"/>
+<img src="https://ifh.cc/g/oJXb6t.png" width="400" height="600"/>
 
 
 ## P3.17
