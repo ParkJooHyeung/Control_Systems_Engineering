@@ -138,20 +138,38 @@ $$
 
 로 정리할 수 있다.
 
-위 상태미분방정식들을 matrix형식으로 표현하면
+이를 다시 1차미분방정식 2개로 정리해보면
+
+$$
+\frac{di_L(t)}{dt} = \frac{v_c(t)}{L} + \frac{v_1(t)}{L} - \frac{v_2(t)}{L}
+$$
+
+$$
+\frac{dv_c(t)}{dt} = - \frac{i_L(t)}{C} -\frac{v_c(t)}{RC} + \frac{v_2(t)}{RC}
+$$
+
+가 되고
+
+위 2개의 1차미분방정식을 이용하여 상태미분방정식을 표현하면
+
+$$
+x(t) = \begin{bmatrix} i_L(t) \\
+v_c(t)\end{bmatrix}
+$$
+
+$$
+v(t) = \begin{bmatrix} v_1(t) \\
+v_2(t)\end{bmatrix}
+$$
 
 $$
 \begin{pmatrix} \dot{x_1} \\
 \dot{x_2} 
 \end{pmatrix} = \begin{bmatrix} 0 & 1/L \\
 -1/C & -1/RC
-\end{bmatrix}\begin{pmatrix} x_1 \\
-x_2
-\end{pmatrix} + \begin{bmatrix} 1/L & -1/L \\
+\end{bmatrix}x(t) + \begin{bmatrix} 1/L & -1/L \\
 0 & 1/RC
-\end{bmatrix} \begin{pmatrix} v_1 \\
-v_2
-\end{pmatrix}, where x_1 = i_L  and  x_2 = v_c
+\end{bmatrix}v(t)
 $$
 
 ## P3.5
