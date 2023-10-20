@@ -82,7 +82,7 @@ $$
 이고 이를 이용해 상태미분 방정식을 표현하면
 
 $$
-\dot{x(t)} = \begin{bmatrix} 0 & 1\\
+\dot{x}(t) = \begin{bmatrix} 0 & 1\\
 -\frac{k}{M} & -\frac{b}{M} \end{bmatrix}x(t) + \begin{bmatrix} 0 \\
 \frac{1}{M} \end{bmatrix}F(t)
 $$
