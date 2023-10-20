@@ -244,6 +244,9 @@ $$
 __위 풀이를 matlab으로 표현하면 아래와 같다.__
 * 코드
 ```matlab
+clc;
+clear;
+
 b = [0 0 8 40];
 a = [1 12 44 48];
 
@@ -255,12 +258,16 @@ D
 
 syms s
 Phi = inv(s*eye(3) - A);
-PI = ilaplace(Phi)
+PI = ilaplace(Phi);
+
+Phi_1 = flip(PI([1:3],3))
+Phi_2 = flip(PI([1:3],2))
+Phi_3 = flip(PI([1:3],1))
 ```
 
 * 출력
 
-<img src="https://ifh.cc/g/oJXb6t.png" width="400" height="600"/>
+<img src="https://ifh.cc/g/ON2bRs.png" width="400" height="600"/>
 
 
 ## P3.17
