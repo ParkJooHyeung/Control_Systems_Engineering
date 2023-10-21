@@ -233,7 +233,7 @@ $$
 $$
 
 $$
-y(t) = \begin{bmatrix} 0 & 1 & 2\end{bmatrix}
+y(t) = \begin{bmatrix} 0 & 1 & 2\end{bmatrix}x(t)
 $$
 
 __(a),(b)를 matlab으로 아래와 같이 표현할 수 있다.__
