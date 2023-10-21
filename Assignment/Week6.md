@@ -274,7 +274,7 @@ __(a) 상태공간모델을 구하라.__
 
 $$
 \dot{x} = \begin{bmatrix} 0 & 1 & 0 \\
-1 & 0 & 0\\
+0 & 0 & 1\\
 -48 & -44 & -12 \end{bmatrix}x + \begin{bmatrix} 0 \\
 0 \\
 1 \end{bmatrix}r
