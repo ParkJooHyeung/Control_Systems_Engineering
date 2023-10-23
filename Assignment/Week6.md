@@ -225,7 +225,7 @@ x_3(t)\end{bmatrix} = \begin{bmatrix} z(t)\\
 $$
 
 $$
-\dot{x}(t) = \begin{bmatrix} 0 & 1 & 0 \\
+x(t) = \begin{bmatrix} 0 & 1 & 0 \\
 0 & 0 & 1 \\
 -2 & 23 & -5 \end{bmatrix}x(t) + \begin{bmatrix} 0 \\
 0 \\
